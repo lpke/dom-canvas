@@ -1,7 +1,7 @@
 {
-  "name": "canva-aip-cc-2",
+  "name": "canva-aip",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
@@ -10,8 +10,6 @@
     "preview": "vite preview --host 0.0.0.0 --port 3000",
     "format": "prettier --write",
     "format:all": "prettier --write .",
-    "dev:nohost": "vite --port 3000",
-    "preview:nohost": "vite preview --port 3000",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"

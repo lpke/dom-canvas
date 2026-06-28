@@ -1,7 +1,3 @@
 export default function HomePage() {
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  );
+  return <main aria-label="Home page"></main>;
 }

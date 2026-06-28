@@ -6,11 +6,11 @@ import { App } from '@/App';
 describe('App', () => {
   it('renders the home route', () => {
     render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: 'Home' })).toBeInTheDocument();
+    expect(screen.getByRole('main', { name: 'Home page' })).toBeInTheDocument();
   });
 });

@@ -1,14 +1,22 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-header: #dbeafe;
-  --spacing-page: 1.25rem;
+  --color-page: var(--color-slate-200);
+  --color-panel: var(--color-white);
+  --color-panel-border: var(--color-slate-300);
+  --color-text-main: var(--color-slate-900);
+  --color-text-muted: var(--color-slate-500);
+  --color-action-primary: var(--color-blue-950);
+  --color-action-primary-text: var(--color-white);
+  --brightness-action-primary-hover: 120%;
+  --color-action-secondary: var(--color-slate-200);
+  --color-action-secondary-text: var(--color-slate-700);
+  --brightness-action-secondary-hover: 102%;
+  --color-accent: var(--color-blue-700);
+  --color-control-border: var(--color-slate-300);
+  --color-control-focus: var(--color-slate-700);
 }
 
 button {
   cursor: pointer;
-}
-
-h1 {
-  @apply text-3xl;
 }
