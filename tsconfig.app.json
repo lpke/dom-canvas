@@ -6,20 +6,25 @@
     "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-
-    /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@/routes/*": ["./src/routes/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/helpers/*": ["./src/helpers/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }

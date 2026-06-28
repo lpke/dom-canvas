@@ -22,3 +22,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# generated with scaffold
+.nuxt
+.output
+.next
+coverage
+.vite
+.env
+.env.*
+!.env.example
+.flake.local/
+.direnv
+*.scaffold-backup
+*.scaffold-backup/
