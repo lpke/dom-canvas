@@ -105,7 +105,9 @@ export function Settings({ element, onChange, onDelete }: SettingsProps) {
         <Fieldset title="Text">
           <ColorField
             label="Color"
-            onChange={(textColor) => update({ textColor })}
+            onChange={(textColor) =>
+              update({ textColor: textColor ?? element.textColor })
+            }
             value={element.textColor}
           />
           <NumberField
