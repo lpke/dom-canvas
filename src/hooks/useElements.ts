@@ -1,49 +1,32 @@
 import { useState } from 'react';
+import {
+  BOX_DEFAULTS,
+  CANVAS_HEIGHT,
+  CANVAS_WIDTH,
+  INITIAL_PLACEMENT_GAP,
+  INITIAL_PLACEMENT_MARGIN,
+  INITIAL_Z_INDEX,
+  TEXT_DEFAULTS,
+} from '@/components/editor/constants';
 import type { EditorElement } from '@/components/editor/types';
-
-const boxDefaults = {
-  width: 132,
-  height: 72,
-  backgroundColor: '#0cc1c9',
-  borderColor: null,
-  borderWidth: 1,
-  textColor: '#0f172a',
-  fontSize: 16,
-};
-
-const textDefaults = {
-  width: 160,
-  height: 48,
-  backgroundColor: null,
-  borderColor: null,
-  borderWidth: 1,
-  textColor: '#0f172a',
-  fontSize: 18,
-  text: 'Text',
-};
-
-const canvasWidth = 896;
-const canvasHeight = 420;
-const placementGap = 24;
-const placementMargin = 48;
 
 export function useElements() {
   const [elements, setElements] = useState<EditorElement[]>([]);
   const [focusedElementId, setFocusedElementId] = useState<string | null>(null);
-  const [prevZ, setPrevZ] = useState(0);
+  const [prevZ, setPrevZ] = useState(INITIAL_Z_INDEX);
 
   const focusedElement =
     elements.find((element) => element.id === focusedElementId) ?? null;
 
   function addBox() {
-    addElement(boxDefaults);
+    addElement(BOX_DEFAULTS);
   }
 
   function addText() {
-    addElement(textDefaults);
+    addElement(TEXT_DEFAULTS);
   }
 
-  function addElement(defaults: typeof boxDefaults | typeof textDefaults) {
+  function addElement(defaults: typeof BOX_DEFAULTS | typeof TEXT_DEFAULTS) {
     const z = prevZ + 1;
     const position = getNextPosition(elements.length, defaults);
     const element = {
@@ -88,27 +71,29 @@ export function useElements() {
 
 function getNextPosition(
   index: number,
-  defaults: typeof boxDefaults | typeof textDefaults,
+  defaults: typeof BOX_DEFAULTS | typeof TEXT_DEFAULTS,
 ) {
-  const rowStep = defaults.height + placementGap;
-  const columnStep = defaults.width + placementGap;
+  const rowStep = defaults.height + INITIAL_PLACEMENT_GAP;
+  const columnStep = defaults.width + INITIAL_PLACEMENT_GAP;
   const rows = Math.max(
     1,
     Math.floor(
-      (canvasHeight - placementMargin * 2 - defaults.height) / rowStep,
+      (CANVAS_HEIGHT - INITIAL_PLACEMENT_MARGIN * 2 - defaults.height) /
+        rowStep,
     ) + 1,
   );
   const columns = Math.max(
     1,
     Math.floor(
-      (canvasWidth - placementMargin * 2 - defaults.width) / columnStep,
+      (CANVAS_WIDTH - INITIAL_PLACEMENT_MARGIN * 2 - defaults.width) /
+        columnStep,
     ) + 1,
   );
   const column = Math.floor(index / rows) % columns;
   const row = index % rows;
 
   return {
-    x: placementMargin + column * columnStep,
-    y: placementMargin + row * rowStep,
+    x: INITIAL_PLACEMENT_MARGIN + column * columnStep,
+    y: INITIAL_PLACEMENT_MARGIN + row * rowStep,
   };
 }

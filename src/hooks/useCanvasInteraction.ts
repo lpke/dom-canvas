@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import type { PointerEvent } from 'react';
+import { MIN_ELEMENT_SIZE, MIN_POSITION } from '@/components/editor/constants';
 import type { EditorElement } from '@/components/editor/types';
 
 type InteractionKind = 'drag' | 'resize';
@@ -19,8 +20,6 @@ type UseCanvasInteractionProps = {
   onChange: (element: EditorElement) => void;
   onFocus: (id: string) => void;
 };
-
-const minSize = 32;
 
 export function useCanvasInteraction({
   onChange,
@@ -74,8 +73,8 @@ export function useCanvasInteraction({
       return;
     }
 
-    nodeRef.current.style.width = `${Math.max(minSize, current.startWidth + diffX)}px`;
-    nodeRef.current.style.height = `${Math.max(minSize, current.startHeight + diffY)}px`;
+    nodeRef.current.style.width = `${Math.max(MIN_ELEMENT_SIZE, current.startWidth + diffX)}px`;
+    nodeRef.current.style.height = `${Math.max(MIN_ELEMENT_SIZE, current.startHeight + diffY)}px`;
   }
 
   function commitInteraction(event: PointerEvent<HTMLDivElement>) {
@@ -88,13 +87,17 @@ export function useCanvasInteraction({
       current.kind === 'drag'
         ? {
             ...current.element,
-            x: Math.max(0, Math.round(current.startX + diffX)),
-            y: Math.max(0, Math.round(current.startY + diffY)),
+            x: Math.max(MIN_POSITION, Math.round(current.startX + diffX)),
+            y: Math.max(MIN_POSITION, Math.round(current.startY + diffY)),
           }
         : {
             ...current.element,
-            width: Math.round(Math.max(minSize, current.startWidth + diffX)),
-            height: Math.round(Math.max(minSize, current.startHeight + diffY)),
+            width: Math.round(
+              Math.max(MIN_ELEMENT_SIZE, current.startWidth + diffX),
+            ),
+            height: Math.round(
+              Math.max(MIN_ELEMENT_SIZE, current.startHeight + diffY),
+            ),
           };
 
     interaction.current.kind = null;

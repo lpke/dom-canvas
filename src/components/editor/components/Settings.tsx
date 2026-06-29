@@ -1,4 +1,13 @@
 import type { ReactNode } from 'react';
+import {
+  DEFAULT_COLOR_INPUT_VALUE,
+  DEFAULT_TEXT,
+  MIN_BORDER_WIDTH,
+  MIN_ELEMENT_SIZE,
+  MIN_FONT_SIZE,
+  MIN_POSITION,
+  MIN_Z_INDEX,
+} from '@/components/editor/constants';
 import type { EditorElement } from '@/components/editor/types';
 
 type SettingsProps = {
@@ -26,31 +35,31 @@ export function Settings({ element, onChange, onDelete }: SettingsProps) {
       <Fieldset title="Position">
         <NumberField
           label="X"
-          min={0}
+          min={MIN_POSITION}
           onChange={(x) => update({ x })}
           value={element.x}
         />
         <NumberField
           label="Y"
-          min={0}
+          min={MIN_POSITION}
           onChange={(y) => update({ y })}
           value={element.y}
         />
         <NumberField
           label="Z"
-          min={0}
+          min={MIN_Z_INDEX}
           onChange={(z) => update({ z })}
           value={element.z}
         />
         <NumberField
           label="W"
-          min={32}
+          min={MIN_ELEMENT_SIZE}
           onChange={(width) => update({ width })}
           value={element.width}
         />
         <NumberField
           label="H"
-          min={32}
+          min={MIN_ELEMENT_SIZE}
           onChange={(height) => update({ height })}
           value={element.height}
         />
@@ -60,7 +69,9 @@ export function Settings({ element, onChange, onDelete }: SettingsProps) {
         className="bg-action-secondary text-action-secondary-text hover:brightness-action-secondary-hover w-full rounded-md px-3 py-2 text-sm font-medium"
         onClick={() =>
           update(
-            element.text === undefined ? { text: 'Text' } : { text: undefined },
+            element.text === undefined
+              ? { text: DEFAULT_TEXT }
+              : { text: undefined },
           )
         }
         type="button"
@@ -84,7 +95,7 @@ export function Settings({ element, onChange, onDelete }: SettingsProps) {
         />
         <NumberField
           label="Width"
-          min={0}
+          min={MIN_BORDER_WIDTH}
           onChange={(borderWidth) => update({ borderWidth })}
           value={element.borderWidth}
         />
@@ -99,7 +110,7 @@ export function Settings({ element, onChange, onDelete }: SettingsProps) {
           />
           <NumberField
             label="Size"
-            min={8}
+            min={MIN_FONT_SIZE}
             onChange={(fontSize) => update({ fontSize })}
             value={element.fontSize}
           />
@@ -173,7 +184,7 @@ function ColorField({ label, onChange, value }: ColorFieldProps) {
           className="border-control-border h-8 w-10 rounded-md border bg-transparent p-1"
           onChange={(event) => onChange(event.target.value)}
           type="color"
-          value={value ?? '#ffffff'}
+          value={value ?? DEFAULT_COLOR_INPUT_VALUE}
         />
         <button
           className="border-control-border text-text-muted hover:bg-action-secondary rounded-md border px-2 py-1 text-xs"
