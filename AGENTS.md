@@ -13,7 +13,7 @@ If you must make an assumption or fill a gap, choose the smallest reasonable opt
 Product description:
 
 ```
-<description>
+Simple DOM-based canvas editor.
 ```
 
 ## Features
@@ -21,7 +21,12 @@ Product description:
 Due to the time constraints, the initial feature set is minimal and must be kept simple. The following defines the current feature scope unless the user explicitly expands it:
 
 ```
-<features>
+- add element to canvas (box/text)
+- drag / resize
+- change color (background or text)
+- change z-index
+- edit text
+- focus indication/state
 ```
 
 ## Tech

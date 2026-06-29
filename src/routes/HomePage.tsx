@@ -1,7 +1,5 @@
+import { Editor } from '@/components/editor/Editor';
+
 export default function HomePage() {
-  return (
-    <main aria-label="Home page">
-      <p>HomePage</p>
-    </main>
-  );
+  return <Editor />;
 }
