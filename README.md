@@ -1,12 +1,8 @@
-# canva-aip
+# dom-canvas
 
-## AI Agent Setup
+Simple app that lets you add rectangle/text elements to a DOM-node-based "canvas" and edit their properties.
 
-Model:     GPT-5.5 (medium reasoning + fast mode)
-Interface: Neovim + CodeCompanion plugin integrates Codex into editor using ACP adapter
-Review:    Agent summaries / Git for seeing changes + doing rollbacks
-Context:   Project-level AGENTS.md for project context, workflow, constraints, validation
-           index.css - Baseline design tokens for agents to use
+Created as part of preparation for a Canva AIP (AI-assisted programming) technical intervial in June 2026.
 
 ## Environment
 

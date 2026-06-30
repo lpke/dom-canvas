@@ -1,5 +1,5 @@
 {
-  description = "canva-aip local dev shell";
+  description = "dom-canvas local dev shell";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
